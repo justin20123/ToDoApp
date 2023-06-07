@@ -30,19 +30,11 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
         }
     }
 
-    fun setDoneTask(id: Int){
+    fun setDoneTask(todo: Todo){
         launch {
             val db = Room.databaseBuilder(getApplication(), TodoDatabase::class.java, "todoDb").build()
-            db.todoDao().setDone(id)
-            todoLD.postValue(db.todoDao().selectAllTodo())
-        }
-    }
-
-    fun clearTask(todo: Todo){
-        launch {
-            val db = Room.databaseBuilder(getApplication(), TodoDatabase::class.java, "todoDb").build()
-            db.todoDao().deleteTodo(todo)
-            todoLD.postValue(db.todoDao().selectAllTodo())
+            db.todoDao().setDone(todo.uuid)
+            todoLD.postValue(db.todoDao().selectNotDone())
         }
     }
 }

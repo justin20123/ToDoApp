@@ -16,7 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class TodoListFragment : Fragment() {
     private lateinit var viewModel: ListTodoViewModel
-    private var adapter = TodoListAdapter(arrayListOf(), { item -> viewModel.clearTask(item) })
+    private var adapter = TodoListAdapter(arrayListOf(), { item -> viewModel.setDoneTask(item) })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

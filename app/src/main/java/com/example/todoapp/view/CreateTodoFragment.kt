@@ -26,7 +26,7 @@ class CreateTodoFragment : Fragment() {
         btnAdd.setOnClickListener {
             val txtTitle = view.findViewById<EditText>(R.id.txtTitle)
             val txtNotes = view.findViewById<EditText>(R.id.txtNotes)
-            var todo = Todo(txtTitle.text.toString(), txtNotes.text.toString())
+            var todo = Todo(txtTitle.text.toString(), txtNotes.text.toString(), 0, 0)
             val list = listOf(todo)
             viewModel.addTodo(list)
             Toast.makeText(view.context, "Data added", Toast.LENGTH_LONG).show()
